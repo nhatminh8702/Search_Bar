@@ -13,21 +13,25 @@ const SearchViews = () => {
 
   const handleSearchChange = useCallback(
     (searchText) => {
-        setSearchList(
-          provincesList.filter((item) =>
-            removeAscent(item.name).includes(removeAscent(searchText))
-          )
-        );
+      setSearchList(
+        provincesList.filter((item) =>
+          removeAscent(item.name).includes(removeAscent(searchText))
+        )
+      );
     },
     [provincesList]
   );
 
   const handleAddSelected = useCallback(
     (selectedItem) => {
-      console.log('--',selectedItem)
-      if (!suggestionList.includes(selectedItem)) {
-        setSuggestionList((current) => [...current, selectedItem]);
+      let isExist = false
+      for(let i = 0; i< suggestionList.length;i++){
+        if (suggestionList[i].id === selectedItem.id) {
+          isExist = true;
+          break;
+        }
       }
+      if(!isExist) setSuggestionList((current) => [...current, selectedItem]);
     },
     [suggestionList]
   );
@@ -51,7 +55,7 @@ const SearchViews = () => {
         onSearchChange={handleSearchChange}
         onAddSelected={handleAddSelected}
         onDeleteSelected={handleDeleteSelected}
-        placeHolder = "Nhap ten thanh pho de tim kiem..."
+        placeHolder="Nhap ten thanh pho de tim kiem..."
       />
     </div>
   );

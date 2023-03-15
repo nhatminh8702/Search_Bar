@@ -34,8 +34,7 @@ const SearchBar = ({
     onDeleteSelected(item);
     suggestionActiveList[item.id] = false;
   };
-
-  console.log(suggestionActiveList);
+console.log(listSelected)
   return (
     <div className="container">
       <div className="searchBar">
