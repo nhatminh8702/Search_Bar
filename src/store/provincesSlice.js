@@ -22,4 +22,4 @@ export const provincesSlice = createSlice({
     },
 });
 
-export const provincesSelector = (store) => store.provinces;
+export const provincesSelector = (store) => store.provinces.provincesList;
