@@ -17,9 +17,9 @@ export const provincesSlice = createSlice({
   reducers: {},
   extraReducers: (build) => {
     build.addCase(fetchProvinces.fulfilled, (state, action) => {
-    state.provincesList = action.payload;
+      state.provincesList = action.payload;
     });
-    },
+  },
 });
 
-export const provincesSelector = (store) => store.provinces.provincesList;
+export const provincesSelector = (store) => store.provinces;

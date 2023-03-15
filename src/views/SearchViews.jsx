@@ -6,31 +6,25 @@ import { removeAscent } from "../utils";
 const SearchViews = () => {
   const dispatch = useDispatch();
 
-  const provincesList= useSelector(provincesSelector);
-  useEffect(() => {
-    console.log('fetch pro')
-    dispatch(fetchProvinces());
-  }, []);
+  const { provincesList } = useSelector(provincesSelector);
+
   const [searchList, setSearchList] = useState([]);
   const [suggestionList, setSuggestionList] = useState([]);
 
-useEffect(()=>{
-    console.log("----", provincesList);
-
-},[provincesList])
-  const handleSearchChange = 
+  const handleSearchChange = useCallback(
     (searchText) => {
-        console.log("---->>>", JSON.parse(JSON.stringify(provincesList)));
-    //   setSearchList(
-    //     provincesList.filter((item) =>
-    //       removeAscent(item.name).includes(removeAscent(searchText))
-    //     )
-    //   );
-    }
+        setSearchList(
+          provincesList.filter((item) =>
+            removeAscent(item.name).includes(removeAscent(searchText))
+          )
+        );
+    },
+    [provincesList]
+  );
 
   const handleAddSelected = useCallback(
-    (event) => {
-      const selectedItem = event.target.value;
+    (selectedItem) => {
+      console.log('--',selectedItem)
       if (!suggestionList.includes(selectedItem)) {
         setSuggestionList((current) => [...current, selectedItem]);
       }
@@ -39,12 +33,16 @@ useEffect(()=>{
   );
 
   const handleDeleteSelected = useCallback(
-    (event) => {
-      const selectedItem = event.target.value;
+    (selectedItem) => {
       setSuggestionList(suggestionList.filter((item) => item !== selectedItem));
     },
     [suggestionList]
   );
+
+  useEffect(() => {
+    dispatch(fetchProvinces());
+  }, []);
+
   return (
     <div>
       <SearchBar
@@ -53,6 +51,7 @@ useEffect(()=>{
         onSearchChange={handleSearchChange}
         onAddSelected={handleAddSelected}
         onDeleteSelected={handleDeleteSelected}
+        placeHolder = "Nhap ten thanh pho de tim kiem..."
       />
     </div>
   );

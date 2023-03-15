@@ -71,7 +71,7 @@ input:focus{
   max-width: 450px;
   margin: 0 auto;
 }
-.providencesList{
+.suggestionList{
   max-height: 400px;
   overflow-y: scroll;
   width: 400px;
@@ -80,12 +80,12 @@ input:focus{
   border-radius: 4px;
   gap: 0;
 }
-.providencesList div{
+.suggestionList div{
   margin: 0;
   padding: 1rem;
   color: #486581;
 }
-.providencesList div:hover{
+.suggestionList div:hover{
   background-color: #617D98;
   color: #FFFFFF;
 }
@@ -100,5 +100,7 @@ input:focus{
   border-radius: 4px;
   gap: 4px;
 }
-.suggestionBox img{
+.suggestionList .active{
+  background-color: #617D98;
+  color: #FFFFFF;
 }
