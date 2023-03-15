@@ -1,0 +1,104 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+body{
+  font-family: 'notoSans';
+}
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.searchBar{
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  width: 400px;
+  min-height: 49px;
+  background:#F1F5F8;
+  border: 1px solid #DBDBDB;
+  border-radius: 4px;
+  padding: 8px 10px;
+  flex-flow: row wrap;
+}
+
+.searchBar .icon{
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  font-size: 20px;
+  padding-left: 1rem;
+}
+.searchBar input{
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  align-self: stretch;
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  flex: none;
+  flex-grow: 1;
+  order: 1;
+}
+.searchBar:focus-within{
+  outline-style: solid;
+  outline-color: #1991D2;
+  outline-width: 1px;
+}
+input:focus{
+  outline: none;
+}
+
+.container{
+  max-width: 450px;
+  margin: 0 auto;
+}
+.providencesList{
+  max-height: 400px;
+  overflow-y: scroll;
+  width: 400px;
+  text-align: left;
+  background-color: #F1F5F8;
+  border-radius: 4px;
+  gap: 0;
+}
+.providencesList div{
+  margin: 0;
+  padding: 1rem;
+  color: #486581;
+}
+.providencesList div:hover{
+  background-color: #617D98;
+  color: #FFFFFF;
+}
+.suggestionBox{
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-flow: row;
+  border: #DCDCDC solid 1px;
+  padding: 0.5rem 0.5rem;
+  border-radius: 4px;
+  gap: 4px;
+}
+.suggestionBox img{
+}
