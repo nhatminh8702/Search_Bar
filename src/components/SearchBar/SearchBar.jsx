@@ -2,13 +2,13 @@ import React, { useState, useCallback, useMemo, useEffect } from "react";
 import iconSearch from "/home/minh/react/ex3/src/assets/images/icons/Combined_Shape.svg";
 import iconDel from "/home/minh/react/ex3/src/assets/images/icons/X.svg";
 import { removeAscent } from "../../utils";
-const SearchBar = ({ List, onSelectedItem, placeHolder }) => {
+const SearchBar = ({ list, onSelectedItem, placeHolder }) => {
   const [searchList, setSearchList] = useState([]);
   const [selectedList, setSelectedList] = useState([]);
 
   const handleSearch = (event) => {
     setSearchList(
-      List.filter((item) =>
+      list.filter((item) =>
         removeAscent(item.name).includes(removeAscent(event.target.value))
       )
     );
@@ -74,4 +74,5 @@ const SearchBar = ({ List, onSelectedItem, placeHolder }) => {
     </div>
   );
 };
+
 export default SearchBar;

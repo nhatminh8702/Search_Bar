@@ -20,7 +20,7 @@ const SearchViews = () => {
   return (
     <div>
       <SearchBar
-        List={provincesList}
+        list={provincesList}
         onSelectedItem = {handleSelectedItem}
         placeHolder="Nhap ten thanh pho de tim kiem..."
       />
