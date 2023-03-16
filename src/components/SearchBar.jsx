@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo, useEffect } from "react";
 import iconSearch from "../assets/images/icons/Combined_Shape.svg";
 import iconDel from "../assets/images/icons/X.svg";
 const SearchBar = ({
@@ -11,30 +11,22 @@ const SearchBar = ({
 }) => {
   const [searchText, setSearchText] = useState("");
 
-  const suggestionActiveList = useMemo(() => {
-    const dataArray = [];
-    for (let i = 0; i < searchList.length; i++) {
-      dataArray.push(false);
-    }
-    return dataArray;
-  }, [searchList]);
-
   const handleSearch = (event) => {
     setSearchText(event.target.value);
     onSearchChange(event.target.value);
   };
 
-  const handleAddSelected = (item, index) => {
-    onAddSelected({ data: item, id: index });
+  const handleAddSelected = (item) => {
+    onAddSelected(item);
     setSearchText("");
-    suggestionActiveList[index] = true;
   };
 
   const handleDeleteSelected = (item) => {
     onDeleteSelected(item);
-    suggestionActiveList[item.id] = false;
   };
-console.log(listSelected)
+useEffect(()=>{
+  console.log(listSelected)
+})
   return (
     <div className="container">
       <div className="searchBar">
@@ -42,8 +34,8 @@ console.log(listSelected)
           <img src={iconSearch} alt="" />
         </button>
         {listSelected.map((item) => (
-          <div key={item.data.id} className="suggestionBox">
-            <p>{item.data.name}</p>
+          <div key={item.code} className="suggestionBox">
+            <p>{item.name}</p>
             <img
               src={iconDel}
               onClick={() => handleDeleteSelected(item)}
@@ -59,11 +51,15 @@ console.log(listSelected)
         />
       </div>
       <div className="suggestionList">
-        {searchList.map((item, index) => (
+        {searchList.map((item) => (
           <div
-            key={item.id}
-            className={suggestionActiveList[index] === true ? "active" : ""}
-            onClick={() => handleAddSelected(item, index)}
+            key={item.code}
+            className={
+              listSelected.findIndex((city) => city.code === item.code) !== -1
+                ? "active"
+                : ""
+            }
+            onClick={() => handleAddSelected(item)}
           >
             {item.name}
           </div>

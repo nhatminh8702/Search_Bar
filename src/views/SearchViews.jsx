@@ -24,14 +24,10 @@ const SearchViews = () => {
 
   const handleAddSelected = useCallback(
     (selectedItem) => {
-      let isExist = false
-      for(let i = 0; i< suggestionList.length;i++){
-        if (suggestionList[i].id === selectedItem.id) {
-          isExist = true;
-          break;
-        }
-      }
-      if(!isExist) setSuggestionList((current) => [...current, selectedItem]);
+      const index = suggestionList.findIndex(
+        (city) => city.code === selectedItem.code
+      );
+      if(index===-1) setSuggestionList((current) => [...current, selectedItem]);
     },
     [suggestionList]
   );
